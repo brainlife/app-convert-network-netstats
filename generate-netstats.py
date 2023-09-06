@@ -53,19 +53,12 @@ def main():
 
     networks_df = build_network_df(network,subjectID,sessionID,tags,datatype_tags)
 
-    conmats, global_measures, local_measures = blmanip.parse_networks(networks_df)
+    i=0
+    conmats = blmanip.build_temporary_network_dataframe(network_df.iloc[i]['igraph'],'connectivity',network_df.iloc[i]['subjectID'],network_df.iloc[i]['sessionID'],network_df.iloc[i]['tags'],network_df.iloc[i]['datatype_tags'])
 
     conmats = conmats.drop(columns=['tags','datatype_tags'])
 
-    global_measures = global_measures.reset_index(drop=True)
-    global_measures = global_measures.drop(columns=['tags','datatype_tags'])
-
-    local_measures = local_measures.reset_index(drop=True)
-    local_measures = local_measures.drop(columns=['tags','datatype_tags'])
-
     conmats.to_csv('./net-stats/net-stats/conmats.csv')
-    global_measures.to_csv('./net-stats/net-stats/global_measures.csv',index=False)
-    local_measures.to_csv('./net-stats/net-stats/local_measures.csv',index=False)
 
 if __name__ == "__main__":
     main()
