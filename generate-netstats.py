@@ -51,7 +51,7 @@ def main():
         os.mkdir('net-stats')
         os.mkdir('net-stats/net-stats')
 
-    networks_df = build_network_df(network,subjectID,sessionID,tags,datatype_tags)
+    network_df = build_network_df(network,subjectID,sessionID,tags,datatype_tags)
 
     i=0
     conmats = blmanip.build_temporary_network_dataframe(network_df.iloc[i]['igraph'],'connectivity',network_df.iloc[i]['subjectID'],network_df.iloc[i]['sessionID'],network_df.iloc[i]['tags'],network_df.iloc[i]['datatype_tags'])
